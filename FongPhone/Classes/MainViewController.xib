@@ -22,8 +22,8 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
                         <tabBarItem title="Fongs" image="update-7 copy.png" id="erf-VX-cuS"/>
-                        <tabBarItem tag="1" title="Sound" image="spanner-7.png" id="d68-EX-3b5"/>
-                        <tabBarItem tag="2" title="Notes/Loops" image="speaker-7.png" id="yiC-pm-hjb"/>
+                        <tabBarItem tag="1" title="Sound" image="Audio Wave-50.png" id="d68-EX-3b5"/>
+                        <tabBarItem tag="2" title="Notes/Loops" image="Musical Notes-50.png" id="yiC-pm-hjb"/>
                         <tabBarItem tag="3" title="States" image="star-7.png" id="BDD-nT-bPJ"/>
                     </items>
                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,8 +39,8 @@
         </view>
     </objects>
     <resources>
-        <image name="spanner-7.png" width="30" height="30"/>
-        <image name="speaker-7.png" width="30" height="30"/>
+        <image name="Audio Wave-50.png" width="30" height="30"/>
+        <image name="Musical Notes-50.png" width="30" height="30"/>
         <image name="star-7.png" width="30" height="30"/>
         <image name="update-7 copy.png" width="30" height="30"/>
     </resources>

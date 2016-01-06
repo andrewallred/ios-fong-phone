@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "58CCC47D9B75898B87A303F637DFD8D6E8E803E8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "90677B9E1077A938C296E0205797A37005C666A4" : 0,
+    "58CCC47D9B75898B87A303F637DFD8D6E8E803E8" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "99E9C537-AA51-40A9-8E1C-FA71AEC1775D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "90677B9E1077A938C296E0205797A37005C666A4" : "..",
+    "58CCC47D9B75898B87A303F637DFD8D6E8E803E8" : "ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FongPhone",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FongPhone.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/trouscaillon\/ios-fong-phone.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "58CCC47D9B75898B87A303F637DFD8D6E8E803E8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chriswininger\/FongPhone.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "90677B9E1077A938C296E0205797A37005C666A4"
+    }
+  ]
+}
