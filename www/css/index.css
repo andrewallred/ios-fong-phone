@@ -1,0 +1,312 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+* {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	/* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+	-webkit-touch-callout: none;
+	/* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust: none;
+	/* prevent webkit from resizing text to fit */
+	-webkit-user-select: none;
+	/* prevent copy paste, to allow, change 'none' to 'text' */
+	background-attachment: fixed;
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	text-transform: uppercase;
+	width: 100%;
+	position: fixed;
+	color: #ffffff;
+}
+
+
+/* Portrait layout (default) */
+
+.app {
+	background: url(../img/logo.png) no-repeat center top;
+	/* 170px x 200px */
+	position: absolute;
+	/* position in the center of the screen */
+	left: 50%;
+	top: 50%;
+	height: 50px;
+	/* text area height */
+	width: 225px;
+	/* text area width */
+	text-align: center;
+	padding: 180px 0px 0px 0px;
+	/* image height is 200px (bottom 20px are overlapped with text) */
+	margin: -115px 0px 0px -112px;
+	/* offset vertical: half of image height and text area height */
+	/* offset horizontal: half of text area width */
+}
+
+
+/* Landscape layout (with min-width) */
+
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+	.app {
+		background-position: left center;
+		padding: 75px 0px 75px 170px;
+		/* padding-top + padding-bottom + text area = image height */
+		margin: -90px 0px 0px -198px;
+		/* offset vertical: half of image height */
+		/* offset horizontal: half of image width and text area width */
+	}
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: normal;
+	margin: 0px;
+	overflow: visible;
+	padding: 0px;
+	text-align: center;
+}
+
+.event {
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	color: #FFFFFF;
+	font-size: 12px;
+	margin: 0px 30px;
+	padding: 2px 0px;
+}
+
+.event.listening {
+	background-color: #333333;
+	display: block;
+}
+
+.event.received {
+	background-color: #4B946A;
+	display: none;
+}
+
+@keyframes fade {
+	from {
+		opacity: 1.0;
+	}
+	50% {
+		opacity: 0.4;
+	}
+	to {
+		opacity: 1.0;
+	}
+}
+
+@-webkit-keyframes fade {
+	from {
+		opacity: 1.0;
+	}
+	50% {
+		opacity: 0.4;
+	}
+	to {
+		opacity: 1.0;
+	}
+}
+
+.blink {
+	animation: fade 3000ms infinite;
+	-webkit-animation: fade 3000ms infinite;
+}
+
+
+/* being my code */
+
+.page {
+	margin: 0;
+	padding: 0;
+	/*background-color: #f9e7e7;*/
+	width: 100%;
+	background: -webkit-linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* Chrome 10+, Saf5.1+ */
+	background: -moz-linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* FF3.6+ */
+	background: -ms-linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* IE10 */
+	background: -o-linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* Opera 11.10+ */
+	background: linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* W3C */
+}
+
+.swiper {
+	opacity: .6;
+	fill: white;
+}
+
+.ui-display-area {
+	/*background-color: #f9e7e7;*/
+	width: 100%;
+	background: -webkit-linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* Chrome 10+, Saf5.1+ */
+	background: -moz-linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* FF3.6+ */
+	background: -ms-linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* IE10 */
+	background: -o-linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* Opera 11.10+ */
+	background: linear-gradient(top, #360033 10%, #0b8793 90%);
+	/* W3C */
+}
+
+table,
+th,
+td {
+	border-bottom: 1px solid rgba(255, 255, 255, .2);
+	padding: 5px;
+	border-spacing: 0;
+}
+
+table.ui-map-table {
+	width: 100%;
+}
+
+table.ui-sound-table {
+	width: 100%;
+	border-bottom: 3px solid rgba(255, 255, 255, .1);
+	;
+}
+
+.map-note,
+td.ui-map-note-map-toggle {
+	opacity: .7;
+	font-size: x-large;
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+td.ui-map-note-map-toggle {
+	opacity: .7;
+}
+
+.ui-map-note-map-toggle.map-note-off,
+.map-note.map-note-off {
+	opacity: 0.3;
+}
+
+.ui-map-note-map-base-note {
+	opacity: .3;
+}
+
+.ui-map-note-map-scale {
+	opacity: .3;
+}
+
+.fong {
+	opacity: 1;
+	/*stroke: white;
+	stroke-width: 1;
+	stroke-opacity: .5;*/
+}
+
+.fong-fade {
+	fill: #ffffff;
+	opacity: 0.5;
+}
+
+.selectedFong {
+	opacity: 0.8;
+	stroke: black;
+	stroke-width: 1;
+	stroke-opacity: 0.5;
+}
+
+.selectedScale {
+	opacity: .9;
+	border-bottom: 1px solid rgba(255, 255, 255, .05);
+}
+
+.noBorder {
+	border-bottom: none;
+}
+
+.scrollable {
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+[ng-drop].drag-enter {
+	/*border: solid 3px white;*/
+	background-color: rgba(255, 255, 255, .3);
+	-moz-border-radius: 5px;
+	/* Firefox 3.6-, removed in Firefox 13 */
+	-webkit-border-radius: 5px;
+	/* Safari 4-, Chrome 3- */
+	border-radius: 5px;
+	/* Firefox 4+, Safari 5+, Chrome 4+, Opera 10.5+, IE9+ */
+}
+
+[ng-drag].dragging {
+	opacity: 0.5;
+	border: 0;
+}
+
+.statesTable {
+	margin: 0px;
+	padding: 0px;
+	text-align:center;vertical-align:center;
+	padding-top: 10px;
+}
+
+.state {
+	background-color: white;
+	border-radius: 5px;
+	display: inline-block;
+	margin: 5px;
+	padding: 0px;
+}
+
+.stateUnused {
+	background-color: white;
+	border-radius: 5px;
+	display: inline-block;
+	margin: 5px;
+	padding: 0px;
+}
+
+.ui-states-btn {
+	font-family: Arial;
+	color: #f8f8ff;
+	padding: 10px 20px 10px 20px;
+	border: solid #f8f8ff 4px;
+	text-decoration: none;
+}
+
+.ui-states-btn:active {
+	padding: 15px;
+	border: solid #f8f8ff 2px;
+}
+
+.ui-states-entry {
+	font-size: x-large;
+}
+
+#statesContentWrapper {
+	margin-top: 5px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
