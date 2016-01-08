@@ -52,11 +52,13 @@
     var css = "";
     var sheets = document.styleSheets;
     for (var i = 0; i < sheets.length; i++) {
-      if (isExternal(sheets[i].href)) {
-        console.warn("Cannot include styles from other hosts: "+sheets[i].href);
+      try {
+        var rules = sheets[i].cssRules;
+      } catch (e) {
+        console.warn("Stylesheet could not be loaded: "+sheets[i].href);
         continue;
       }
-      var rules = sheets[i].cssRules;
+
       if (rules != null) {
         for (var j = 0; j < rules.length; j++) {
           var rule = rules[j];
@@ -81,10 +83,21 @@
   }
 
   function getDimension(el, clone, dim) {
-    return (clone.getAttribute(dim) !== null && !clone.getAttribute(dim).match(/%$/) && parseInt(clone.getAttribute(dim))) ||
+    var v = (el.viewBox.baseVal && el.viewBox.baseVal[dim]) ||
+      (clone.getAttribute(dim) !== null && !clone.getAttribute(dim).match(/%$/) && parseInt(clone.getAttribute(dim))) ||
       el.getBoundingClientRect()[dim] ||
       parseInt(clone.style[dim]) ||
       parseInt(window.getComputedStyle(el).getPropertyValue(dim));
+    return (typeof v === 'undefined' || v === null || isNaN(parseFloat(v))) ? 0 : v;
+  }
+
+  function reEncode(data) {
+    data = encodeURIComponent(data);
+    data = data.replace(/%([0-9A-F]{2})/g, function(match, p1) {
+      var c = String.fromCharCode('0x'+p1);
+      return c === '%' ? '%25' : c;
+    });
+    return decodeURIComponent(data);
   }
 
   out$.svgAsDataUri = function(el, options, cb) {
@@ -95,29 +108,22 @@
     inlineImages(el, function() {
       var outer = document.createElement("div");
       var clone = el.cloneNode(true);
-      var width, height, viewBoxWidth, viewBoxHeight;
+      var width, height;
       if(el.tagName == 'svg') {
-        width = getDimension(el, clone, 'width');
-        height = getDimension(el, clone, 'height');
-        if (typeof width === "undefined" || width === null || isNaN(parseFloat(width))) {
-          width = 0;
-        }
-        if (typeof height === "undefined" || height === null || isNaN(parseFloat(height))) {
-          height = 0;
-        }
-        viewBoxWidth = el.viewBox.baseVal && el.viewBox.baseVal.width !== 0 ? el.viewBox.baseVal.width : width;
-        viewBoxHeight = el.viewBox.baseVal && el.viewBox.baseVal.height !== 0 ? el.viewBox.baseVal.height : height;
-      } else {
+        width = options.width || getDimension(el, clone, 'width');
+        height = options.height || getDimension(el, clone, 'height');
+      } else if(el.getBBox) {
         var box = el.getBBox();
         width = box.x + box.width;
         height = box.y + box.height;
         clone.setAttribute('transform', clone.getAttribute('transform').replace(/translate\(.*?\)/, ''));
-        viewBoxWidth = width;
-        viewBoxHeight =  height;
 
         var svg = document.createElementNS('http://www.w3.org/2000/svg','svg')
         svg.appendChild(clone)
         clone = svg;
+      } else {
+        console.error('Attempted to render non-SVG element', el);
+        return;
       }
 
       clone.setAttribute("version", "1.1");
@@ -125,7 +131,12 @@
       clone.setAttributeNS(xmlns, "xmlns:xlink", "http://www.w3.org/1999/xlink");
       clone.setAttribute("width", width * options.scale);
       clone.setAttribute("height", height * options.scale);
-      clone.setAttribute("viewBox", "0 0 " + viewBoxWidth + " " + viewBoxHeight);
+      clone.setAttribute("viewBox", [
+        options.left || 0,
+        options.top || 0,
+        width,
+        height
+      ].join(" "));
 
       outer.appendChild(clone);
 
@@ -138,16 +149,14 @@
       clone.insertBefore(defs, clone.firstChild);
 
       var svg = doctype + outer.innerHTML;
-      // encode then decode to handle `btoa` on Unicode; see MDN for `btoa`.
-      var uri = 'data:image/svg+xml;base64,' + window.btoa(decodeURIComponent(encodeURIComponent(svg)));
+      var uri = 'data:image/svg+xml;base64,' + window.btoa(reEncode(svg));
       if (cb) {
         cb(uri);
       }
     });
   }
 
-  out$.saveSvgAsPng = function(el, name, options) {
-    options = options || {};
+  out$.svgAsPngUri = function(el, options, cb) {
     out$.svgAsDataUri(el, options, function(uri) {
       var image = new Image();
       image.onload = function() {
@@ -155,18 +164,39 @@
         canvas.width = image.width;
         canvas.height = image.height;
         var context = canvas.getContext('2d');
+        if(options && options.backgroundColor){
+          context.fillStyle = options.backgroundColor;
+          context.fillRect(0, 0, canvas.width, canvas.height);
+        }
         context.drawImage(image, 0, 0);
-
-        var a = document.createElement('a');
-        a.download = name;
-        a.href = canvas.toDataURL('image/png');
-        document.body.appendChild(a);
-        a.addEventListener("click", function(e) {
-          a.parentNode.removeChild(a);
-        });
-        a.click();
+        var a = document.createElement('a'), png;
+        try {
+          png = canvas.toDataURL('image/png');
+        } catch (e) {
+          if (e instanceof SecurityError) {
+            console.error("Rendered SVG images cannot be downloaded in this browser.");
+            return;
+          } else {
+            throw e;
+          }
+        }
+        cb(png);
       }
       image.src = uri;
+    });
+  }
+
+  out$.saveSvgAsPng = function(el, name, options) {
+    options = options || {};
+    out$.svgAsPngUri(el, options, function(uri) {
+      var a = document.createElement('a');
+      a.download = name;
+      a.href = uri;
+      document.body.appendChild(a);
+      a.addEventListener("click", function(e) {
+        a.parentNode.removeChild(a);
+      });
+      a.click();
     });
   }
 })();
