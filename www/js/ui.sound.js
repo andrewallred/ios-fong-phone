@@ -22,8 +22,7 @@
 		this.registerKnob = FongPhone.utils.registerKnob;
 		_.bindAll(this, 'set', 'attachToDom', 'registerKnob');
 
-		this.set(state);
-
+		this.set(state);		
 
 		function attachToDom($scope) {
 			var self = this;
@@ -33,7 +32,9 @@
 
 			$('#soundControlsDiv').css('max-height', (window.innerHeight - 63) + "px");
 			$('.page').css('max-height', window.innerHeight + "px");
-
+			
+			FongPhone.UI.Helper.registerAlertOnFirstView("soundMessage", 'The controls on this view allow you to change the sonic properties of each Fong including filter, wave types, delay and more. Got it?', 'Sound');
+			
 			// investigate $scope values
 			$scope.FilterOn = logicBoard.FilterOn;
 
@@ -246,5 +247,5 @@
 			}
 		}
 		// --- END Getters and Setters ---
-	};
+	};	
 })();

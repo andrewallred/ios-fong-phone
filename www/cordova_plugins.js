@@ -27,6 +27,13 @@ module.exports = [
         "clobbers": [
             "navigator.analytics"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "id": "cordova-plugin-dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -37,7 +44,8 @@ module.exports.metadata =
     "cordova-plugin-google-analytics": "0.8.1",
     "com.cmackay.plugins.googleanalytics": "0.1.22",
     "cordova-plugin-disable-nsapptransportsecurity": "1.0.2",
-    "cordova-plugin-whitelist": "1.2.0"
+    "cordova-plugin-whitelist": "1.2.0",
+    "cordova-plugin-dialogs": "1.2.0"
 }
 // BOTTOM OF METADATA
 });

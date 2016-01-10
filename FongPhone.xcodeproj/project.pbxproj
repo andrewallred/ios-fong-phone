@@ -31,6 +31,7 @@
 		30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC414816E50CA1004E6F35 /* icon-72@2x.png */; };
 		3FD6E9DC31E141DBAAB82058 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D0854CC5234A988A13F920 /* SystemConfiguration.framework */; };
 		466DB3B8E4C74769A0B6EB28 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FAF0D60B3F34A30AB22167D /* libGoogleAnalyticsServices.a */; };
+		51AB3FCE58FD4707822A2912 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2810DAAC8A042E0A463B062 /* CDVNotification.m */; };
 		5206FDA2708D4FD2B906128E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA419DF335D40269AD3A19A /* libsqlite3.dylib */; };
 		57750BFD5EEA428EBAEE27E4 /* UniversalAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6DD4065AE448E0853948EE /* UniversalAnalyticsPlugin.m */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
@@ -45,6 +46,14 @@
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		87D0C72E270C4098B56EBD30 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CF59A99CD9498786509C62 /* libGoogleAnalyticsServices.a */; };
+		A0136EA532494E1C9D5D76C4 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C031193AE89544318AC33D1C /* CDVNotification.bundle */; };
+		A94B54611C41A40D00C2FCC0 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94B54601C41A40D00C2FCC0 /* SnapshotHelper.swift */; };
+		A94FB1C41C4262F6000F36F3 /* Audio Wave-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A94FB1C31C4262F6000F36F3 /* Audio Wave-50@2x.png */; };
+		A94FB1CA1C42645A000F36F3 /* Add to Favorites-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A94FB1C51C42645A000F36F3 /* Add to Favorites-50.png */; };
+		A94FB1CB1C42645A000F36F3 /* Add to Favorites-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A94FB1C61C42645A000F36F3 /* Add to Favorites-50@2x.png */; };
+		A94FB1CC1C42645A000F36F3 /* Initial State-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A94FB1C71C42645A000F36F3 /* Initial State-50.png */; };
+		A94FB1CD1C42645A000F36F3 /* Initial State-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A94FB1C81C42645A000F36F3 /* Initial State-50@2x.png */; };
+		A94FB1CE1C42645A000F36F3 /* Musical Notes-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A94FB1C91C42645A000F36F3 /* Musical Notes-50@2x.png */; };
 		A98AC82A1C3D906900E1FFE0 /* speaker-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A98AC8291C3D906900E1FFE0 /* speaker-7.png */; };
 		A98AC82E1C3D923000E1FFE0 /* spanner-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A98AC82B1C3D923000E1FFE0 /* spanner-7.png */; };
 		A98AC82F1C3D923000E1FFE0 /* star-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A98AC82C1C3D923000E1FFE0 /* star-7.png */; };
@@ -59,6 +68,7 @@
 		D7BA655B10FE49D5A6A59F61 /* Insomnia.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8C2A29F67842FAA6E43CF7 /* Insomnia.m */; };
 		D8B346010AE542A69BCDA3BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B85A1752AAB4F70B0BC184B /* libz.dylib */; };
 		F1B5A7491BC642CDB880BC76 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6983804D5ACE40F48E7C80F8 /* CDVSplashScreen.m */; };
+		FEA6F23552094A7AAA7524D3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DA95B308B140AAB3F419EA /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +140,7 @@
 		6E5EAA7A1F6447CB89DD2162 /* Insomnia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Insomnia.h; path = "nl.x-services.plugins.insomnia/Insomnia.h"; sourceTree = "<group>"; };
 		6FA419DF335D40269AD3A19A /* libsqlite3.dylib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6FAF0D60B3F34A30AB22167D /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = FongPhone/Plugins/com.cmackay.plugins.googleanalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		7112B43E232D4E149A2750A4 /* CDVNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVNotification.h; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; };
 		71D5C99DC7D14BA686267C7A /* UniversalAnalyticsPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniversalAnalyticsPlugin.h; path = "cordova-plugin-google-analytics/UniversalAnalyticsPlugin.h"; sourceTree = "<group>"; };
 		72847AD7119B431D9A332A73 /* GoogleAnalyticsPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoogleAnalyticsPlugin.m; path = com.cmackay.plugins.googleanalytics/GoogleAnalyticsPlugin.m; sourceTree = "<group>"; };
 		75D0854CC5234A988A13F920 /* SystemConfiguration.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -150,6 +161,14 @@
 		8D8C2A29F67842FAA6E43CF7 /* Insomnia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Insomnia.m; path = "nl.x-services.plugins.insomnia/Insomnia.m"; sourceTree = "<group>"; };
 		9FA039E77B484868B475C756 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = "cordova-plugin-google-analytics/GAITracker.h"; sourceTree = "<group>"; };
 		A544B082CB5C4967A8F7C59C /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = "cordova-plugin-google-analytics/GAIDictionaryBuilder.h"; sourceTree = "<group>"; };
+		A94B545F1C41A40C00C2FCC0 /* FongPhoneUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FongPhoneUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		A94B54601C41A40D00C2FCC0 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		A94FB1C31C4262F6000F36F3 /* Audio Wave-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Audio Wave-50@2x.png"; path = "tabbaricons/Audio Wave-50@2x.png"; sourceTree = "<group>"; };
+		A94FB1C51C42645A000F36F3 /* Add to Favorites-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Add to Favorites-50.png"; path = "tabbaricons/Add to Favorites-50.png"; sourceTree = "<group>"; };
+		A94FB1C61C42645A000F36F3 /* Add to Favorites-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Add to Favorites-50@2x.png"; path = "tabbaricons/Add to Favorites-50@2x.png"; sourceTree = "<group>"; };
+		A94FB1C71C42645A000F36F3 /* Initial State-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Initial State-50.png"; path = "tabbaricons/Initial State-50.png"; sourceTree = "<group>"; };
+		A94FB1C81C42645A000F36F3 /* Initial State-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Initial State-50@2x.png"; path = "tabbaricons/Initial State-50@2x.png"; sourceTree = "<group>"; };
+		A94FB1C91C42645A000F36F3 /* Musical Notes-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Musical Notes-50@2x.png"; path = "tabbaricons/Musical Notes-50@2x.png"; sourceTree = "<group>"; };
 		A98AC8291C3D906900E1FFE0 /* speaker-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "speaker-7.png"; path = "tabbaricons/speaker-7.png"; sourceTree = "<group>"; };
 		A98AC82B1C3D923000E1FFE0 /* spanner-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spanner-7.png"; path = "tabbaricons/spanner-7.png"; sourceTree = "<group>"; };
 		A98AC82C1C3D923000E1FFE0 /* star-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star-7.png"; path = "tabbaricons/star-7.png"; sourceTree = "<group>"; };
@@ -162,8 +181,10 @@
 		A98D7DCC1C41A22D00961310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9FA11701BD4374C00CAF2FB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FongPhone/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		B3F3A05CC52A4957B7850C70 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = "cordova-plugin-google-analytics/GAIEcommerceFields.h"; sourceTree = "<group>"; };
+		B6DA95B308B140AAB3F419EA /* AudioToolbox.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B79377191DEF4860AE276D8B /* GoogleAnalyticsPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoogleAnalyticsPlugin.h; path = com.cmackay.plugins.googleanalytics/GoogleAnalyticsPlugin.h; sourceTree = "<group>"; };
 		BA6DD4065AE448E0853948EE /* UniversalAnalyticsPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UniversalAnalyticsPlugin.m; path = "cordova-plugin-google-analytics/UniversalAnalyticsPlugin.m"; sourceTree = "<group>"; };
+		C031193AE89544318AC33D1C /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CDVNotification.bundle; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		D53847D3F31F47D88391F3C4 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = com.cmackay.plugins.googleanalytics/GAI.h; sourceTree = "<group>"; };
 		D630BF1AFE9549A199E22AF0 /* CoreData.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -172,6 +193,7 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F0B07CD242D042E88CB9CBA9 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = com.cmackay.plugins.googleanalytics/GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		F2810DAAC8A042E0A463B062 /* CDVNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVNotification.m; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; };
 		F45C2B318B6248CDA15A1A23 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = "cordova-plugin-google-analytics/GAILogger.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = FongPhone/config.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +213,7 @@
 				D8B346010AE542A69BCDA3BC /* libz.dylib in Frameworks */,
 				5206FDA2708D4FD2B906128E /* libsqlite3.dylib in Frameworks */,
 				466DB3B8E4C74769A0B6EB28 /* libGoogleAnalyticsServices.a in Frameworks */,
+				FEA6F23552094A7AAA7524D3 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +281,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A94FB1C51C42645A000F36F3 /* Add to Favorites-50.png */,
+				A94FB1C61C42645A000F36F3 /* Add to Favorites-50@2x.png */,
+				A94FB1C71C42645A000F36F3 /* Initial State-50.png */,
+				A94FB1C81C42645A000F36F3 /* Initial State-50@2x.png */,
+				A94FB1C91C42645A000F36F3 /* Musical Notes-50@2x.png */,
+				A94FB1C31C4262F6000F36F3 /* Audio Wave-50@2x.png */,
 				A98AC8331C3D961600E1FFE0 /* Audio Wave Filled-50.png */,
 				A98AC8341C3D961600E1FFE0 /* Audio Wave-50.png */,
 				A98AC8351C3D961600E1FFE0 /* Musical Notes-50.png */,
@@ -269,6 +298,7 @@
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* FongPhone-Info.plist */,
+				C031193AE89544318AC33D1C /* CDVNotification.bundle */,
 			);
 			name = Resources;
 			path = FongPhone/Resources;
@@ -286,6 +316,7 @@
 				7B85A1752AAB4F70B0BC184B /* libz.dylib */,
 				6FA419DF335D40269AD3A19A /* libsqlite3.dylib */,
 				6FAF0D60B3F34A30AB22167D /* libGoogleAnalyticsServices.a */,
+				B6DA95B308B140AAB3F419EA /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -329,6 +360,8 @@
 				53BBD062801E4BB2A3AAEB5F /* GAITrackedViewController.h */,
 				05202937D24547C7AE0864EF /* GAITracker.h */,
 				B79377191DEF4860AE276D8B /* GoogleAnalyticsPlugin.h */,
+				F2810DAAC8A042E0A463B062 /* CDVNotification.m */,
+				7112B43E232D4E149A2750A4 /* CDVNotification.h */,
 			);
 			name = Plugins;
 			path = FongPhone/Plugins;
@@ -376,8 +409,10 @@
 		A98D7DC91C41A22D00961310 /* FongPhoneUITests */ = {
 			isa = PBXGroup;
 			children = (
+				A94B54601C41A40D00C2FCC0 /* SnapshotHelper.swift */,
 				A98D7DCA1C41A22D00961310 /* FongPhoneUITests.m */,
 				A98D7DCC1C41A22D00961310 /* Info.plist */,
+				A94B545F1C41A40C00C2FCC0 /* FongPhoneUITests-Bridging-Header.h */,
 			);
 			path = FongPhoneUITests;
 			sourceTree = "<group>";
@@ -437,6 +472,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 720;
 				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
@@ -508,9 +544,13 @@
 				7E7966E61810823500FA85AD /* icon-small.png in Resources */,
 				3088BBBD154F3926009F9C59 /* Default-Landscape@2x~ipad.png in Resources */,
 				3088BBBE154F3926009F9C59 /* Default-Landscape~ipad.png in Resources */,
+				A94FB1CA1C42645A000F36F3 /* Add to Favorites-50.png in Resources */,
 				A98AC8371C3D961600E1FFE0 /* Audio Wave-50.png in Resources */,
+				A94FB1C41C4262F6000F36F3 /* Audio Wave-50@2x.png in Resources */,
+				A94FB1CE1C42645A000F36F3 /* Musical Notes-50@2x.png in Resources */,
 				3088BBBF154F3926009F9C59 /* Default-Portrait@2x~ipad.png in Resources */,
 				7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */,
+				A94FB1CB1C42645A000F36F3 /* Add to Favorites-50@2x.png in Resources */,
 				A98AC82A1C3D906900E1FFE0 /* speaker-7.png in Resources */,
 				3088BBC0154F3926009F9C59 /* Default-Portrait~ipad.png in Resources */,
 				A98AC8361C3D961600E1FFE0 /* Audio Wave Filled-50.png in Resources */,
@@ -521,12 +561,15 @@
 				3088BBC2154F3926009F9C59 /* Default~iphone.png in Resources */,
 				D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */,
 				30B4F30219D5E07200D9F7D8 /* Default-Landscape-736h.png in Resources */,
+				A94FB1CC1C42645A000F36F3 /* Initial State-50.png in Resources */,
 				30C1856619D5FC0A00212699 /* icon-60@3x.png in Resources */,
+				A94FB1CD1C42645A000F36F3 /* Initial State-50@2x.png in Resources */,
 				A98AC82E1C3D923000E1FFE0 /* spanner-7.png in Resources */,
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
 				A98AC82F1C3D923000E1FFE0 /* star-7.png in Resources */,
+				A0136EA532494E1C9D5D76C4 /* CDVNotification.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +612,7 @@
 				F1B5A7491BC642CDB880BC76 /* CDVSplashScreen.m in Sources */,
 				57750BFD5EEA428EBAEE27E4 /* UniversalAnalyticsPlugin.m in Sources */,
 				C73625FEDAD04136B751AF2C /* GoogleAnalyticsPlugin.m in Sources */,
+				51AB3FCE58FD4707822A2912 /* CDVNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +621,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A98D7DCB1C41A22D00961310 /* FongPhoneUITests.m in Sources */,
+				A94B54611C41A40D00C2FCC0 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +764,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ksm.FongPhoneUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FongPhoneUITests/FongPhoneUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_TARGET_NAME = FongPhone;
 				USES_XCTRUNNER = YES;
 			};
@@ -749,6 +796,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ksm.FongPhoneUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FongPhoneUITests/FongPhoneUITests-Bridging-Header.h";
 				TEST_TARGET_NAME = FongPhone;
 				USES_XCTRUNNER = YES;
 				VALIDATE_PRODUCT = YES;
