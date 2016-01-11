@@ -6,6 +6,7 @@
 
 	FongPhone.UI.StatesController = function (uiMap, uiPad, uiSoundSettings) {
 		FongPhone.utils.createGetSet(this, 'selectedState', this.getSelectedState, this.setSelectedState);
+		this.keepLoop = true;
 
 		this.uiMap = uiMap;
 		this.uiPad = uiPad;
@@ -112,6 +113,8 @@
 			
 			$(document).on('taphold', ".state,.stateUnused", function (event) {
 				// wrap in $apply so that angular knows to update ui bindings
+				$('.state').stop(true);
+				$('.state').css('opacity', .4);
 				self.$scope.$apply(function() {
 					self.fadeStateDiv(event.target, .6);
 					var index = event.target.id.replace("state", "");
@@ -220,12 +223,28 @@
 			this.uiMap.set(this.getMapState());
 		},
 		restoreState: function (name) {
-			this.uiPad.set(this.getPadState(name));
+			this.uiPad.set(this.getPadState(name), true);
 			this.uiSoundSettings.set(this.getSoundState(name));
-			this.uiMap.set(this.getMapState(name));
+
+			var mapState = this.getMapState(name);
+			if (this.keepLoop && mapState) {
+				_.each(mapState.fongs, function(_fong) {
+					if (_fong.NoteMapInfo) {
+						delete _fong.NoteMapInfo.LoopDuration;
+						delete _fong.NoteMapInfo.loopChunkinessFactor;
+						delete _fong.NoteMapInfo.pullChunkiness;
+						delete _fong.NoteMapInfo.LoopOn;
+						delete _fong.NoteMapInfo.makeLoopChunky;
+						delete _fong.NoteMapInfo.pullLoopChunky;
+					}
+				});
+			}
+
+			this.uiMap.set(mapState);
 			this.selectedState = name;
 		},
-		fadeStateDiv: function (target, targetOpacity) {	
+		fadeStateDiv: function (target, targetOpacity) {
+			$('.state').stop(true);
 			$('.state').css('opacity', .4);
 			$(target).animate({
 				opacity: .8
@@ -300,6 +319,5 @@
 		if (storedState) storedState = JSON.parse(storedState);
 		if (storedState) return _.extend(defaults, storedState);
 		return defaults;
-	}	
-	
+	}
 })();

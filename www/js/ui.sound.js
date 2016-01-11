@@ -22,7 +22,8 @@
 		this.registerKnob = FongPhone.utils.registerKnob;
 		_.bindAll(this, 'set', 'attachToDom', 'registerKnob');
 
-		this.set(state);		
+		this.set(state);
+
 
 		function attachToDom($scope) {
 			var self = this;
@@ -247,5 +248,5 @@
 			}
 		}
 		// --- END Getters and Setters ---
-	};	
+	};
 })();
