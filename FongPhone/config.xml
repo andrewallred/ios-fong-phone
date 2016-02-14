@@ -59,11 +59,11 @@
     <splash height="1242" src="res/screen/ios/Default-Landscape-736h.png" width="2208" />
     <name>Fong Phone</name>
     <description>
-        A new mobile synth experience
+		The Fong Phone is a synthesizer in your pocket. It has a unique interface designed to be both beautiful and functional. Use it to make some sweet drones or just lose yourself to the cosmos while riding the metro.
     </description>
-    <author email="chris.wininger@gmail.com" href="http://cordova.io">
-        Chris Wininger
-    </author>
+    <author email="andrew.r.allred@gmail.com" href="https://github.com/trouscaillon">
+		Andrew Allred
+	</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

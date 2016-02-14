@@ -144,19 +144,19 @@ NSString* baseUrl;
     
     if (item.tag == 0)
     {
-        [webView stringByEvaluatingJavaScriptFromString:@"window.location = '#/'"];
+        [webView stringByEvaluatingJavaScriptFromString:@"setWindow('#/');"];
     }
     else if (item.tag == 1)
     {
-        [webView stringByEvaluatingJavaScriptFromString:@"window.location = '#/sound'"];        
+        [webView stringByEvaluatingJavaScriptFromString:@"setWindow('#/sound');"];
     }
     else if (item.tag == 2)
     {
-        [webView stringByEvaluatingJavaScriptFromString:@"window.location = '#/note-map'"];
+        [webView stringByEvaluatingJavaScriptFromString:@"setWindow('#/note-map');"];
     }
     else if (item.tag == 3)
     {
-        [webView stringByEvaluatingJavaScriptFromString:@"window.location = '#/states'"];
+        [webView stringByEvaluatingJavaScriptFromString:@"setWindow('#/states');"];
     }
 
 }

@@ -10,7 +10,8 @@ var stateController;
 
 	if (isCordova) {
 		document.addEventListener('deviceready', _deviceReady, false);
-		document.addEventListener("pause", _onPause, false);
+		document.addEventListener('pause', _onPause, false);
+		document.addEventListener('resume', _onResume, false);
 	} else {
 		$(_deviceReady);
 	}
@@ -52,7 +53,10 @@ var stateController;
 	stateController.uiPad = padUI;
 	stateController.uiSoundSettings = soundUI;
 
-	// start the oscillators after all other settings have been initialized to avoid hiccup
+
+	FongPhone.Navigation.tabNavigationFunc = _.partial(FongPhone.Navigation.tabNavigationFunc, stateController);
+
+		// start the oscillators after all other settings have been initialized to avoid hiccup
 	setTimeout(function() {
 		logicBoard.start();
 	}, 1000);
@@ -78,9 +82,6 @@ var stateController;
 		}).when('/note-map', {
 			templateUrl: 'views/view-map.html',
 			controller: 'noteMapController'
-		}).when('/help', {
-			templateUrl: 'views/view-help.html',
-			controller: 'helpController'
 		}).when('/sound', {
 			templateUrl: 'views/view-sound.html',
 			controller: 'soundController'
@@ -92,33 +93,50 @@ var stateController;
 
 	// initialize angular route controllers
 	fongPhone.controller('padController', ['$scope', function ($scope) {
-		padUI.attachToDom();
-		 $scope.pageClass = 'view-pad';
+		$scope.tabbedNavigationTabs = FongPhone.Navigation.Tabs;
+		$scope.pageClass = 'view-pad';
+		$scope.tabNavigationFunc = FongPhone.Navigation.tabNavigationFunc;
+		padUI.attachToDom($scope);
 	}]);
 
 	fongPhone.controller('soundController', ['$scope', function ($scope) {
-		soundUI.attachToDom($scope);
+		$scope.tabbedNavigationTabs = FongPhone.Navigation.Tabs;
 		$scope.pageClass = 'view-sound';
+		$scope.tabNavigationFunc = FongPhone.Navigation.tabNavigationFunc;
+		soundUI.attachToDom($scope);
 	}]);
 
 	fongPhone.controller('noteMapController', function($scope) {
-		noteMap.attachToDom($scope);
+		$scope.tabbedNavigationTabs = FongPhone.Navigation.Tabs;
 		$scope.pageClass = 'view-map';
+		$scope.tabNavigationFunc = FongPhone.Navigation.tabNavigationFunc;
+		noteMap.attachToDom($scope);
 	});
 
 	fongPhone.controller('stateController', function($scope) {
+		$scope.tabbedNavigationTabs = FongPhone.Navigation.Tabs;
+		$scope.pageClass = 'view-states';
+		$scope.tabNavigationFunc = FongPhone.Navigation.tabNavigationFunc;
 		stateController.attachToDom($scope);
 	});
-	fongPhone.controller('helpController', FongPhone.UI.HelpView);
 
 	function _deviceReady(id) {
 		console.log('device ready');
 		var domElement = document.querySelector('body');
 		angular.bootstrap(domElement, ['fongPhone']);
+		setTimeout(function () {
+			if (navigator && navigator.splashscreen)
+				navigator.splashscreen.hide();
+		}, 500);
 	}
 
 	function _onPause() {
+		FongPhone.AppState.paused = true;
 		stateController.saveAll();
+	}
+
+	function _onResume() {
+		FongPhone.AppState.paused = false;
 	}
 
 	FongPhone.Debugging.dumpAllStateToConsole = function() {
@@ -131,8 +149,8 @@ function log(message) {
 	$('#log').html(message);
 }
 
-document.addEventListener('deviceready', function () {
-	setTimeout(function () {
-		navigator.splashscreen.hide();
-	}, 500);
-});
+function setWindow(page) {
+	setTimeout(function() {
+		window.location = page;
+	}, 10);
+}

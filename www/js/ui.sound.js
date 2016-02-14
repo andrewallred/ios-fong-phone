@@ -28,12 +28,17 @@
 		function attachToDom($scope) {
 			var self = this;
 			this.$scope = $scope;
+			var heightStatusBar = 20;
+			var heightSub = heightStatusBar + FongPhone.Globals.tabbedNavHeight + 8;
+			var dial = $(".dial");
 
-			FongPhone.UI.Helper.registerSwipeNavigation(this, 'ui.sound.state', 'soundSettingsSwipeStrip', '#/states', '#/');
+			if (FongPhone.Globals.isAndroid) {
+				$('.fong-phone-apple-status-bar').hide();
+				heightSub = heightSub - heightStatusBar - 8;
+			}
 
-			$('#soundControlsDiv').css('max-height', (window.innerHeight - 63) + "px");
+			$('#soundControlsDiv').css('max-height', (window.innerHeight - heightSub) + "px");
 			$('.page').css('max-height', window.innerHeight + "px");
-			
 			FongPhone.UI.Helper.registerAlertOnFirstView("soundMessage", 'The controls on this view allow you to change the sonic properties of each Fong including filter, wave types, delay and more. Got it?', 'Sound');
 			
 			// investigate $scope values
@@ -44,9 +49,9 @@
 				self.filterOn = $scope.FilterOn;
 			};
 
-			$(".dial").attr("data-fgColor", "rgba(255, 255, 255, .5)");
-			$(".dial").attr("data-bgColor", "rgba(255, 255, 255, .1)");
-			$(".dial").attr('disabled', 'disabled');
+			dial.attr("data-fgColor", "rgba(255, 255, 255, .5)");
+			dial.attr("data-bgColor", "rgba(255, 255, 255, .1)");
+			dial.attr('disabled', 'disabled');
 
 
 			this.registerKnob('#filterResonanceControl', 'filterResonance', this.filterResonance, this);

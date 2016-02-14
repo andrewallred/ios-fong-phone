@@ -22,12 +22,23 @@
 
 	_.extend(FongPhone.UI.NoteMap.prototype, {
 		attachToDom: function($scope) {
-			console.log('height: %s, max-height: %s', (window.innerHeight - 40) + "px", window.innerHeight + "px");
-			$('#mapSubUI').css('height', (window.innerHeight - 63) + "px");
-			$('#mapUI').css('max-height', window.innerHeight + "px");
+			var heightStatusBar = 20;
+			var heightSub = heightStatusBar + FongPhone.Globals.tabbedNavHeight + 8;
 
 			var self = this;
 			this.$scope = $scope;
+
+			if (FongPhone.Globals.isAndroid) {
+				$('.fong-phone-apple-status-bar').hide();
+				heightSub = heightSub - heightStatusBar - 8;
+			}
+			$('#mapSubUI').css('height', (window.innerHeight - heightSub) + "px");
+			$('#mapUI').css('max-height', window.innerHeight + "px");
+
+			var loopDurationControl = $('#loopDurationControl');
+			var chunkinessControl = $('#chunkinessControl');
+			var pullChunkinessControl = $('#pullChunkinessControl');
+			var dials = $('.dial');
 
 			// re-initialize values with scope set to make sure they propagate to ui
 			this.selectedFongIndex = this.selectedFongIndex;
@@ -157,20 +168,19 @@
 				self.selectedFong.NoteMapInfo.pullChunkiness = pullChunkiness / 100.0;
 			}
 			function updateKnobs() {
-				$("#loopDurationControl").val(self.selectedFong.NoteMapInfo.LoopDuration);
-				$("#loopDurationControl").trigger('change');
+				loopDurationControl.val(self.selectedFong.NoteMapInfo.LoopDuration);
+				loopDurationControl.trigger('change');
 
-				$("#chunkinessControl").val(parseInt(self.selectedFong.NoteMapInfo.loopChunkinessFactor * 100));
-				$("#chunkinessControl").trigger('change');
+				chunkinessControl.val(parseInt(self.selectedFong.NoteMapInfo.loopChunkinessFactor * 100));
+				chunkinessControl.trigger('change');
 
-				$("#pullChunkinessControl").val(parseInt(self.selectedFong.NoteMapInfo.pullChunkiness * 100));
-				$("#pullChunkinessControl").trigger('change');
+				pullChunkinessControl.val(parseInt(self.selectedFong.NoteMapInfo.pullChunkiness * 100));
+				pullChunkinessControl.trigger('change');
 			}
-			
 
-			$(".dial").attr("data-fgColor", "rgba(255, 255, 255, .5)");
-			$(".dial").attr("data-bgColor", "rgba(255, 255, 255, .1)");
-			$(".dial").attr('disabled', 'disabled');
+			dials.attr("data-fgColor", "rgba(255, 255, 255, .5)");
+			dials.attr("data-bgColor", "rgba(255, 255, 255, .1)");
+			dials.attr('disabled', 'disabled');
 
 			FongPhone.utils.createGetSet(this, 'loopDuration', getLoopDuration, setLoopDuration);
 			FongPhone.utils.createGetSet(this, 'loopChunkinessFactor', getLoopChunkinessFactor, setLoopChunkinessFactor);
@@ -181,8 +191,6 @@
 			FongPhone.utils.registerKnob('#pullChunkinessControl', 'loopPullChunkiness', this.selectedFong.NoteMapInfo.pullChunkiness, this);
 			
 			updateKnobs();
-
-			FongPhone.UI.Helper.registerSwipeNavigation(this, 'ui.map.state', 'mapPadSwipeDown', '#/', '#/states');
 			
 			FongPhone.UI.Helper.registerAlertOnFirstView("mapMessage", 'The controls on this view allow you to change the musical properties of each Fong such as scales, octaves and looping behavior. Got it?', 'Notes & Loops');
 			

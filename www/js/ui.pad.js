@@ -43,27 +43,28 @@
 	};
 
 	_.extend(FongPhone.UI.Pad.prototype, {
-		attachToDom: function(attachChildren) {
+		attachToDom: function($scope) {
 			// make changes to dom to create ui
 			this.createComponents();
 			// set up dom events
 			this.listen();
 
+			var heightSub = FongPhone.Globals.tabbedNavHeight + 5;
+			if (FongPhone.Globals.isAndroid) {
+				$('.fong-phone-apple-status-bar').hide();
+				heightSub = heightSub - 5;
+			}
+			$('#phongUIGrid').css('height', (window.innerHeight - heightSub) + "px");
+
 			// make sure each fong gets re-attached
 			_.each(this.fongDots, function(fong) { fong.attachToDom(); });
-
 		},
 		createComponents: function () {
-			$('#' + this.svgElementID).height(window.innerHeight);
-
-			FongPhone.UI.Helper.registerSwipeNavigation(this, 'ui.pad.state', 'uiPadSwipeBottom', '#/sound', '#/note-map');
-
+			$('#' + this.svgElementID).height(window.innerHeight - FongPhone.Globals.tabbedNavHeight);
 			this.backgroundPad = document.getElementById(this.svgElementID);
-
-			document.getElementById('uiPadSwipeBottom').setAttribute('y', window.innerHeight - uiPadSwipeBottom.getAttribute('height'));
 			document.getElementById('version').setAttribute('y', window.innerHeight - 50);
 			document.getElementById('version').setAttribute('x', window.innerWidth - 60);
-			
+
 			if (!bVersionDisplayed)
 			{
 				$.get("version.txt", function (data) {
@@ -144,11 +145,11 @@
 		},
 		getFreq: function (x, y, r, fong) {
 			var f = fong.boardInput;
-			if (!f.NoteMapInfo.NoteMapOn || !f.NoteMapInfo.NoteMap) {
+			if (!f.NoteMapInfo.NoteMapOn || !f.NoteMapInfo.NoteMap || f.NoteMapInfo.NoteMap.length == 0) {
 				return map(y / 2, (r / 2), window.innerHeight - r, 0, this.board.osc1MaxFreq);
 			} else {
-				// ?? freq2 map(y, (r/2), window.innerHeight - target.getAttribute('height'), 0, self.board.osc1MaxFreq)
-				var noteNumber = Math.floor(y * f.NoteMapInfo.NoteMap.length / window.innerHeight);
+				var noteNumber = Math.floor(y * f.NoteMapInfo.NoteMap.length / window.innerHeight);		
+				noteNumber = Math.max(noteNumber, 0);
 				var note = f.NoteMapInfo.NoteMap[noteNumber];
 				if (!note) note = f.NoteMapInfo.NoteMap[f.NoteMapInfo.NoteMap.length - 1];
 				return note.freq;
@@ -156,10 +157,11 @@
 		},
 		getFilterFrequency: function (x, y, r, fong) {
 			var f = fong.boardInput;
-			if (!f.NoteMapInfo.FilterNoteMapOn || !f.NoteMapInfo.NoteMap) {
+			if (!f.NoteMapInfo.FilterNoteMapOn || !f.NoteMapInfo.NoteMap || f.NoteMapInfo.NoteMap.length == 0) {
 				return map(x / 2, (r / 2), window.innerWidth - r, 0, this.board.osc1MaxFreq);
 			} else {
 				var fnoteNumber = Math.floor(x * f.NoteMapInfo.NoteMap.length / window.innerWidth);
+				fnoteNumber = Math.max(fnoteNumber, 0);
 				var fnote = f.NoteMapInfo.NoteMap[fnoteNumber];
 				if (!fnote) fnote = f.NoteMapInfo.NoteMap[f.NoteMapInfo.NoteMap.length - 1];
 				return fnote.freq;
